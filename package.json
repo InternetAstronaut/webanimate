@@ -19,7 +19,7 @@
     "console-feed": "^3.1.10",
     "electron-is-dev": "^1.2.0",
     "electron-updater": "^4.2.5",
-    "file-saver": "^2.0.5",
+    "file-saver": "^2.0.0",
     "localforage": "^1.7.3",
     "node-sass": "^4.9.4",
     "query-string": "^6.9.0",
