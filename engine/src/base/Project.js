@@ -1200,6 +1200,41 @@ Wick.Project = class extends Wick.Base {
     }
 
     /**
+     * Creates a symbol from the layers currently selected.
+     */
+    createClipFromLayers() {
+        // Order the selected layers front-to-back
+        let selectedLayers = this.selection.getSelectedObjects('Layer');
+        selectedLayers.sort((layer1, layer2) => layer1.index - layer2.index);
+
+        let newLayer = new Wick.Layer();
+        let thisTimeline = selectedLayers[0].parentTimeline;
+        thisTimeline.addLayer(newLayer);
+
+        let maxLayerLength = selectedLayers.reduce((maxEnd, layer) => Math.max(maxEnd, layer.length), 0);
+        let blankFrame = newLayer.insertBlankFrame(1);
+        blankFrame.length = maxLayerLength;
+
+        let clip = new Wick.Clip({
+            project: this
+        });
+        let clipTimeline = clip.timeline;
+        let firstClipLayer = clipTimeline.layers[0];
+        selectedLayers.forEach(layer => {
+            layer.remove();
+            clipTimeline.addLayer(layer);
+        });
+        firstClipLayer.remove();
+
+        blankFrame.addClip(clip);
+        clip.isSynced = true;
+
+        // TODO add to asset library
+        this.selection.clear();
+        this.selection.select(clip);
+    }
+
+    /**
      * Breaks selected clips into their children clips and paths.
      */
     breakApartSelection() {

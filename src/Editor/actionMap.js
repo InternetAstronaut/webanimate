@@ -169,6 +169,13 @@ class ActionMapInterface extends Object {
         id: 'action-convert-selection-to-clip',
         color: 'active-blue'
       },
+      convertLayersToClip: {
+        icon: 'clip-object-dark',
+        tooltip: 'Make Clip',
+        action: this.editor.createClipFromLayers,
+        id: 'action-convert-layers-to-clip',
+        color: 'active-blue'
+      },
       addAssetToCanvas: {
         icon: 'add',
         tooltip: 'Add To Canvas',
