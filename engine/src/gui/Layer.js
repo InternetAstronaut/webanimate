@@ -148,8 +148,18 @@ Wick.GUIElement.Layer = class extends Wick.GUIElement {
 
     onMouseDown (e) {
         this.model.activate();
-        this.model.project.selection.clear();
-        this.model.project.selection.select(this.model);
+
+        if(!e.shiftKey) {
+            this.model.project.selection.clear();
+        }
+        if(this.model.isSelected) {
+            if(e.shiftKey) {
+                this.model.project.selection.deselect(this.model);
+            }
+        } else {
+            this.model.project.selection.select(this.model);
+        }
+
         this.projectWasModified();
     }
 

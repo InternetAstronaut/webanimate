@@ -46,10 +46,11 @@ class Inspector extends Component {
      */
     this.inspectorContentRenderFunctions = {
       "frame": this.renderFrame,
-      "layer": this.renderLayer,
       "multiframe": this.renderMultiFrame,
       "tween": this.renderTween,
       "multitween": this.renderMultiTween,
+      "layer": this.renderLayer,
+      "multilayer": this.renderMultiLayer,
       "clip": this.renderClip,
       "button": this.renderButton,
       "path": this.renderPath,
@@ -75,6 +76,7 @@ class Inspector extends Component {
       'convertSelectionToClip': ["path", "text", "image", "multipath", "multiclip", "multicanvas"],
       'editTimeline': ["clip", "button"],
       'addAssetToCanvas': ["imageasset"],
+      'convertLayersToClip': ["layer", "multilayer"],
     }
 
     /**
@@ -85,6 +87,8 @@ class Inspector extends Component {
       "multiframe": "Multi-Frame",
       "tween": "Tween",
       "multitween": "Multi-Tween",
+      "layer": "Layer",
+      "multilayer": "Multi-Layer",
       "clip": "Clip",
       "button": "Button",
       "path": "Path",
@@ -666,6 +670,13 @@ class Inspector extends Component {
    */
   renderMultiFrame = () => {
     return ( <div className="inspector-content" /> );
+  }
+
+  /** 
+   * Renders the inspector view for all properties of a multi-layer selection.
+   */
+  renderMultiLayer = () => {
+    return ( <div className="inspector-content" /> )
   }
 
   /**

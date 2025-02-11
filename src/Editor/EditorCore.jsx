@@ -509,6 +509,14 @@ class EditorCore extends Component {
   }
 
   /**
+   * Creates a new clip from the selected layers and adds it to the top layer.
+   */
+  createClipFromLayers = () => {
+    this.project.createClipFromLayers();
+    this.projectDidChange({ actionName: "Create Clip From Layers" });
+  }
+
+  /**
    * Creates a new button from the selected paths and clips and adds it to the project.
    * @param {string} name The name of the button after creation.
    */
