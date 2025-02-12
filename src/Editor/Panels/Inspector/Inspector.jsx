@@ -77,6 +77,7 @@ class Inspector extends Component {
       'editTimeline': ["clip", "button"],
       'addAssetToCanvas': ["imageasset"],
       'convertLayersToClip': ["layer", "multilayer"],
+      'distributeSelectionToLayers': ["path", "text", "image", "multipath", "multiclip", "multicanvas"],
     }
 
     /**
