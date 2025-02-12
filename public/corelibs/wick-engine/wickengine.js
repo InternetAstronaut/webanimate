@@ -1,5 +1,5 @@
 /*Wick Engine https://github.com/Wicklets/wick-engine*/
-var WICK_ENGINE_BUILD_VERSION = "2025.2.11.11.33.7";
+var WICK_ENGINE_BUILD_VERSION = "2025.2.11.18.46.51";
 /*!
  * Paper.js v0.12.4 - The Swiss Army Knife of Vector Graphics Scripting.
  * http://paperjs.org/
@@ -51188,6 +51188,24 @@ Wick.Project = class extends Wick.Base {
 
     this.selection.clear();
     this.selection.select(clip);
+  }
+  /**
+   * Moves the selected paths and clips to their own layers.
+   */
+
+
+  distributeSelectionToLayers() {
+    let thisSelected = this.selection.getSelectedObjects("Canvas");
+    let thisTimeline = thisSelected[0].parentTimeline;
+    let thisPlayheadPosition = thisTimeline.playheadPosition;
+    thisSelected.forEach(object => {
+      let newLayer = new Wick.Layer();
+      thisTimeline.insertChild(newLayer, 0);
+      newLayer.name = `Layer ${thisTimeline.layers.length}`;
+      let newFrame = newLayer.insertBlankFrame(thisPlayheadPosition);
+      object.remove();
+      newFrame.addChild(object);
+    });
   }
   /**
    * Breaks selected clips into their children clips and paths.

@@ -96,7 +96,8 @@ import iconButtonObjectDark from 'resources/object-icons/button-dark.svg';
 import iconClipObject from 'resources/object-icons/clip.svg';
 import iconClipObjectDark from 'resources/object-icons/clip-dark.svg';
 import iconTextObject from 'resources/object-icons/text.svg';
-import iconImageObject from'resources/object-icons/image.svg';
+import iconImageObject from 'resources/object-icons/image.svg';
+import iconLayerObjectDark from 'resources/object-icons/layer-dark.svg'
 
 // Rows
 import iconBrushSize from "resources/inspector-icons/property-icons/brushsize.svg";
@@ -307,6 +308,7 @@ const icons = {
   "button-object-dark": iconButtonObjectDark,
   "clip-object": iconClipObject,
   "clip-object-dark": iconClipObjectDark,
+  "layer-object-dark": iconLayerObjectDark,
   "image-object": iconImageObject,
   "text-object": iconTextObject,
   "edit-timeline": iconEditTimeline,

@@ -517,6 +517,14 @@ class EditorCore extends Component {
   }
 
   /**
+   * Moves the selected paths and clips to their own layers.
+   */
+  distributeSelectionToLayers = () => {
+    this.project.distributeSelectionToLayers();
+    this.projectDidChange({ actionName: "Distribute Selection To Layers" });
+  }
+
+  /**
    * Creates a new button from the selected paths and clips and adds it to the project.
    * @param {string} name The name of the button after creation.
    */
