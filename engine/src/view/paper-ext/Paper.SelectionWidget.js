@@ -414,6 +414,7 @@ class SelectionWidget {
      *
      */
     scaleSelection (scale, pivot) {
+        if (!pivot) pivot = this.pivot;
         this._itemsInSelection.forEach(item => {
             item.rotate(-this.boxRotation, this.pivot);
             item.scale(scale, pivot);
