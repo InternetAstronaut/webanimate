@@ -1,5 +1,5 @@
 /*Wick Engine https://github.com/Wicklets/wick-engine*/
-var WICK_ENGINE_BUILD_VERSION = "2025.2.11.18.46.51";
+var WICK_ENGINE_BUILD_VERSION = "2025.2.13.10.9.18";
 /*!
  * Paper.js v0.12.4 - The Swiss Army Knife of Vector Graphics Scripting.
  * http://paperjs.org/
@@ -46854,6 +46854,23 @@ Wick.ToolSettings = class {
       name: 'brushMode',
       default: 'none',
       options: ['none', 'behind', 'inside']
+    }, {
+      /**
+       * The render style of the outside-clip viewer.
+       * "none": Don't show the objects outside the current clip
+       * "standard": Show the outside objects at a certain opacity
+       */
+      type: "choice",
+      name: 'outsideClipStyle',
+      default: 'none',
+      options: ['none', 'standard']
+    }, {
+      type: "number",
+      name: 'outsideClipStandardOpacity',
+      default: 0.5,
+      min: 0,
+      max: 1,
+      step: 0.01
     }];
   }
   /**
@@ -63269,6 +63286,12 @@ Wick.View.Project = class extends Wick.View {
 
     this._svgBackgroundLayer.remove();
 
+    this._svgOuterLayer = new paper.Layer();
+    this._svgOuterLayer.name = 'wick_project_outer';
+    this._svgOuterLayer.applyMatrix = false;
+
+    this._svgOuterLayer.remove();
+
     this._svgBordersLayer = new paper.Layer();
     this._svgBordersLayer.name = 'wick_project_borders';
 
@@ -63320,6 +63343,14 @@ Wick.View.Project = class extends Wick.View {
     this._svgBackgroundLayer.locked = true;
     this.paper.project.addLayer(this._svgBackgroundLayer);
 
+    this._svgOuterLayer.removeChildren();
+
+    this._svgOuterLayer.matrix.set(new paper.Matrix());
+
+    this._svgOuterLayer.locked = true;
+    this._svgOuterLayer.opacity = 1;
+    this.paper.project.addLayer(this._svgOuterLayer);
+
     if (this.model.focus.isRoot) {
       // We're in the root timeline, render the canvas normally
       var stage = this._generateSVGCanvasStage();
@@ -63330,6 +63361,25 @@ Wick.View.Project = class extends Wick.View {
       var originCrosshair = this._generateSVGOriginCrosshair();
 
       this._svgBackgroundLayer.addChild(originCrosshair);
+
+      if (this.model.toolSettings.getSetting('outsideClipStyle') !== 'none') {
+        var thisParentLayer = this.model.focus.parentLayer;
+        var thisParentTimeline = thisParentLayer.parentTimeline;
+        thisParentTimeline.view.render();
+        this.model.focus.view.group.remove();
+        thisParentTimeline.view.frameLayers.forEach(layer => {
+          this._svgOuterLayer.addChild(layer);
+        });
+        var thisClipTransformation = this.model.focus.transformation;
+
+        this._svgOuterLayer.translate(-thisClipTransformation.x, -thisClipTransformation.y);
+
+        this._svgOuterLayer.rotate(-thisClipTransformation.rotation, new paper.Point());
+
+        this._svgOuterLayer.scale(1 / thisClipTransformation.scaleX, 1 / thisClipTransformation.scaleY, new paper.Point());
+
+        this._svgOuterLayer.opacity = this.model.toolSettings.getSetting('outsideClipStandardOpacity');
+      }
     } // Generate frame layers
 
 

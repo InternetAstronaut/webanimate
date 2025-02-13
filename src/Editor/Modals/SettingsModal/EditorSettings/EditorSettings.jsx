@@ -40,6 +40,38 @@ class EditorSettings extends Component {
     for (let i = 0; i < options.length; i++) {
       optionsLabels.push({label: options[i], value: options[i]});
     }
+
+    let outsideClipStyleContent;
+    switch (this.props.getToolSetting('outsideClipStyle')) {
+      case 'standard':
+        const inputRestrictions = this.props.getToolSettingRestrictions('outsideClipStandardOpacity');
+        outsideClipStyleContent = (
+          <div className="editor-settings-row">
+            Object Opacity:
+            <div className="editor-settings-slider-row">
+              <WickInput
+                className="editor-settings-slider-row-slider"
+                type="slider"
+                id="editor-settings-outside-clip-opacity-slider"
+                value={this.props.getToolSetting('outsideClipStandardOpacity')}
+                onChange={(val) => {this.props.setToolSetting('outsideClipStandardOpacity', val)}}
+                {...inputRestrictions} />
+              <WickInput
+                className="editor-settings-slider-row-number"
+                type="numeric"
+                id="editor-settings-outside-clip-opacity-number"
+                value={this.props.getToolSetting('outsideClipStandardOpacity')}
+                onChange={(val) => {this.props.setToolSetting('outsideClipStandardOpacity', val)}}
+                {...inputRestrictions} />
+            </div>
+          </div>
+        );
+        break;
+      case 'none':
+      default:
+        outsideClipStyleContent = (<></>);
+    }
+
     return (
       <div className="editor-settings-modal-body">
         <div className="editor-settings-group">
@@ -91,7 +123,19 @@ class EditorSettings extends Component {
               </div>
             </div>
           }
-
+          <br />
+          <label htmlFor="outside-clip-style" className="editor-settings-group-title">Outside Clip Viewer</label>
+            Style:
+            <WickInput
+              type="select"
+              id="editor-settings-outside-clip-style"
+              value={this.props.getToolSetting('outsideClipStyle')}
+              options={
+                this.props.getToolSettingRestrictions('outsideClipStyle').options.map(option => ({label: option, value: option}))
+              }
+              onChange={(val) => {this.props.setToolSetting('outsideClipStyle', val.value)}}
+            />
+          {outsideClipStyleContent}
         </div>
       </div>
     )
