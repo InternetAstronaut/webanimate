@@ -26,20 +26,20 @@ The Wick Editor is a free and open-source tool for creating games, animations, a
 
 ## Getting started
 
-These instructions are for MacOS and Linux, we currently don't have instructions for Windows, but if you need help please feel free to email contact@wickeditor.com.
+These instructions are for MacOS and Linux, we currently don't have instructions for Windows, but if you need help, please contact upstream!
 
 ### Requirements
 
 You'll need to download the following:
 
-- [npm](https://www.npmjs.com/get-npm)
-
+- [NodeJS 14](https://nodejs.org/en/download) (**NOTE: This is a acient version of NodeJS, from the acient times**)
+- [NodeJS 14 from `scoop`](https://scoop.sh/#/apps?q=nodejs14&id=ad5eddce0b1705a4141b06f972d326a2aaf03d4c) (Great package manager for people who don't wanna install stuff using wonky installers)
 ### Installation
 
 1) Clone this repository:
 
     ```bash
-    git clone https://github.com/Wicklets/wick-editor/
+    git clone https://github.com/StickmanRed/wick-editor.git
     ```
 
 2) Using the command line, change directories into the newly created `wick-editor` folder:
@@ -67,6 +67,7 @@ You'll need to download the following:
     ```bash
     localhost:3000
     ```
+    (**NOTE: It may open up itself once `npm start` is ran**).
 
 Have fun hacking on Wick! 🎉
 
@@ -94,35 +95,20 @@ Wick Editor is under the GNU v3 Public License. See the [LICENSE](LICENSE.md) fo
 
 ## Links
 
-* [Wick Editor Site](https://www.wickeditor.com)
-* [Wick Editor Community Forum](https://forum.wickeditor.com/)
-* [Follow on Twitter](https://twitter.com/wickeditor)
-* [Follow on Facebook](https://www.facebook.com/wickeditor/)
+* [Wick Editor Site](https://www.wickeditor.com) (**NOT OWENED BY FORKERS**)
+* [Wick Editor Community Forum](https://forum.wickeditor.com/) (**Nice place, but, NOT OWENED BY FORKERS**)
+* [Follow on Twitter](https://twitter.com/wickeditor) (**NOT OWENED BY FORKERS**)
+* [Follow on Facebook](https://www.facebook.com/wickeditor/) (**NOT OWENED BY FORKERS**)
 
 
 
 ## Building and Releasing the Desktop App 
 
-Please refer to this Wiki entry for information on our dektop build processes! [https://github.com/Wicklets/wick-editor/wiki/Building-Desktop-Editors-for-Release](https://github.com/Wicklets/wick-editor/wiki/Building-Desktop-Editors-for-Release).
+Please refer to this Wiki entry for information on our dektop build processes! [https://github.com/Wicklets/wick-editor/wiki/Building-Desktop-Editors-for-Release](https://github.com/Wicklets/wick-editor/wiki/Building-Desktop-Editors-for-Release). (**NOTE: We don't actually build these, old electron is a finicky mess**).
 
 If you are familiar with electron-builder, electron-packager, or have experience building desktop electron apps for production, we could use your help! Please message us or open an issue.
 
-## Support From
-
-<a href="https://www.mozilla.org/en-US/moss/">
-	<img src="https://www.wickeditor.com/static/media/mozilla.787ef555.svg" alt="Mozilla Open Source Support" height="100px"/>
+## Contributors
+<a href="https://github.com/StickmanRed/wick-editor/graphs/contributors">
+	<img src = "https://contrib.rocks/image?repo=StickmanRed/wick-editor"/>
 </a>
-
-<a href="https://studioforcreativeinquiry.org/frfaf-projects">
-	<img src="https://www.wickeditor.com/static/media/studio.35c7a92e.svg" alt="Frank-Ratchye Fund for Art at the Frontier" height="100px"/>
-</a>
-
-<a href="https://www.du.edu/ahss/opensourcearts/">
-	<img src="https://www.wickeditor.com/static/media/cosa_logo.9af883a9.png" alt="Clinic for Open Source Arts" height="100px"/>
-</a>
-
-
-## Testing Support From
-
-<a href="https://www.browserstack.com/"><img src=".github/images/browserstack.svg" alt="Browser Stack" width="25%"></a>
-
