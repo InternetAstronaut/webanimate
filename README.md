@@ -32,7 +32,7 @@ These instructions are for MacOS and Linux, we currently don't have instructions
 
 You'll need to download the following:
 
-- [NodeJS 14](https://nodejs.org/en/download) (**NOTE: This is a acient version of NodeJS, from the acient times**)
+- [NodeJS 14](https://nodejs.org/en/download) (**NOTE: This is a ancient version of NodeJS, from the ancient times**)
 - [NodeJS 14 from `scoop`](https://scoop.sh/#/apps?q=nodejs14&id=ad5eddce0b1705a4141b06f972d326a2aaf03d4c) (Great package manager for people who don't wanna install stuff using wonky installers)
 ### Installation
 
