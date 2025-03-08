@@ -104,7 +104,7 @@ Wick Editor is under the GNU v3 Public License. See the [LICENSE](LICENSE.md) fo
 
 ## Building and Releasing the Desktop App 
 
-Please refer to this Wiki entry for information on our dektop build processes! [https://github.com/Wicklets/wick-editor/wiki/Building-Desktop-Editors-for-Release](https://github.com/Wicklets/wick-editor/wiki/Building-Desktop-Editors-for-Release). (**NOTE: We don't actually build these, old electron is a finicky mess**).
+Please refer to this Wiki entry for information on our desktop build processes! [https://github.com/Wicklets/wick-editor/wiki/Building-Desktop-Editors-for-Release](https://github.com/Wicklets/wick-editor/wiki/Building-Desktop-Editors-for-Release). (**NOTE: We don't actually build these, old electron is a finicky mess**).
 
 If you are familiar with electron-builder, electron-packager, or have experience building desktop electron apps for production, we could use your help! Please message us or open an issue.
 
